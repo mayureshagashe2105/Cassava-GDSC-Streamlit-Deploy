@@ -1,10 +1,8 @@
 import streamlit as st
 import time
-from MobileNetV2 import MobileNetV2
+from VGG import VGG
 from MobileNetV2 import MobileNetV2
 import numpy as np
-import matplotlib.pyplot as plt
-import tensorflow as tf
 
 LABEL_DICT = {0: 'Cassava Bacterial Blight (CBB)',
               1: 'Cassava Brown Streak Disease (CBSD)',
@@ -41,10 +39,10 @@ if option == 'MobileNetV2':
 
 elif option == 'EfficientNet':
     pass
-elif option == 'MobileNet':
-    model = MobileNetV2.load_model()
+elif option == 'VGG16':
+    model = VGG.load_model()
     if image_file is not None:
-        image = MobileNetV2.preprocessing(image_file.getvalue())
+        image = VGG.preprocessing(image_file.getvalue())
 
         prediction = model.predict(image)
 
