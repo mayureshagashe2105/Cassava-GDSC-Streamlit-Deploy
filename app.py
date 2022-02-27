@@ -3,7 +3,7 @@ from PIL import Image
 from keras.preprocessing.image import load_img,img_to_array
 import numpy as np
 from keras.models import load_model
-from vgg import vgg
+from VGG import VGG
 
 st.title("Cassava Disease Detection")
 
@@ -18,10 +18,10 @@ option = st.selectbox(
 
 st.write('You selected:', option)
 
-if option=='VGG16':
-    model = vgg.load_model()
+if option == 'VGG16':
+    model = VGG.load_model()
     if image_file is not None:
-        image = vgg.preprocess(image_file.getvalue())
+        image = VGG.preprocessing(image_file.getvalue())
 
         prediction = model.predict(image)
         print(prediction)
