@@ -23,17 +23,18 @@ if image_file:
 
 option = st.selectbox('Choose the Model ', ('Choose a model', 'MobileNetV2', 'EfficientNet', 'VGG16'))
 
-st.write('You selected:', option)
-
 if option == 'MobileNetV2':
     model = MobileNetV2.load_model()
     if image_file is not None:
-        image = MobileNetV2.preprocessing(image_file.getvalue())
 
-        prediction = model.predict(image)
+        with st.spinner('Wait for it...'):
+            image = MobileNetV2.preprocessing(image_file.getvalue())
 
-        prediction = np.argmax(prediction)
+            prediction = model.predict(image)
 
+            prediction = np.argmax(prediction)
+
+            st.balloons()
         st.success(f"""Prediction: {LABEL_DICT[prediction]}""")
 
 
@@ -42,12 +43,15 @@ elif option == 'EfficientNet':
 elif option == 'VGG16':
     model = VGG.load_model()
     if image_file is not None:
-        image = VGG.preprocessing(image_file.getvalue())
 
-        prediction = model.predict(image)
+        with st.spinner('Wait for it...'):
+            image = VGG.preprocessing(image_file.getvalue())
 
-        prediction = np.argmax(prediction)
+            prediction = model.predict(image)
 
+            prediction = np.argmax(prediction)
+
+            st.balloons()
         st.success(f"""Prediction: {LABEL_DICT[prediction]}""")
 else:
-    pass
+    st.info('Please Select a model!')

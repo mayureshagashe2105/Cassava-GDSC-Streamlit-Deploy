@@ -1,5 +1,6 @@
 import tensorflow as tf
 from ModelName import ModelName
+import streamlit as st
 
 
 class MobileNetV2(ModelName):
@@ -10,6 +11,7 @@ class MobileNetV2(ModelName):
         pass
 
     @staticmethod
+    @st.cache(allow_output_mutation=True)
     def load_model():
         model = tf.keras.models.load_model(MobileNetV2.__model_path)
         return model
