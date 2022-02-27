@@ -16,6 +16,6 @@ class VGG(ModelName):
 
     @staticmethod
     def preprocessing(image):
-        image = super(VGG).preprocessing(image)
+        image = super(VGG, VGG).preprocessing(image)
         image = tf.image.resize(image, VGG.__input_shape)
         return image
