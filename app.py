@@ -12,7 +12,13 @@ LABEL_DICT = {0: 'Cassava Bacterial Blight (CBB)',
 
 st.title("Cassava Disease Detection")
 
-image_file = st.file_uploader("Upload Images", type=["png", "jpg", "jpeg"])
+method = st.selectbox('Capture or Upload an Image', ('Upload Image', 'Capture Image'))
+
+if method == 'Upload Image':
+    image_file = st.file_uploader("Upload Images", type=["png", "jpg", "jpeg"])
+else:
+    image_file = st.camera_input("Capture Image")
+
 if image_file:
     progress_bar = st.progress(0)
     for i in range(100):
