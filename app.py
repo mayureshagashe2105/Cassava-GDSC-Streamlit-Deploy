@@ -50,8 +50,8 @@ if option == 'MobileNetV2':
         st.sidebar.warning("Upload or Capture first!")
 
 if option == 'EfficientNet':
-    model=EfficientNetB3.load_model()
     if image_file is not None:
+        model=EfficientNetB3.load_model()
 
         with st.spinner('Wait for it...'):
             image = EfficientNetB3.preprocessing(image_file.getvalue())
@@ -62,6 +62,9 @@ if option == 'EfficientNet':
 
             st.balloons()
         st.success(f"""Prediction: {LABEL_DICT[prediction]}""")
+    else:
+        st.sidebar.warning("Upload or Capture first!")
+
 elif option == 'VGG16':
     if image_file is not None:
         model = VGG.load_model()
