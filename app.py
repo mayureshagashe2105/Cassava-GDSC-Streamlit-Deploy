@@ -12,6 +12,10 @@ LABEL_DICT = {0: 'Cassava Bacterial Blight (CBB)',
 
 st.title("Cassava Disease Detection")
 
+st.sidebar.title("Choose a Model")
+option = st.sidebar.radio('Choose the Model ', ('Choose a model', 'MobileNetV2', 'EfficientNet', 'VGG16'))
+
+
 method = st.selectbox('Capture or Upload an Image', ('Upload Image', 'Capture Image'))
 
 if method == 'Upload Image':
@@ -26,8 +30,6 @@ if image_file:
         progress_bar.progress(i + 1)
     st.info('Image Uploaded successfully!')
     st.image(image_file.getvalue())
-
-option = st.selectbox('Choose the Model ', ('Choose a model', 'MobileNetV2', 'EfficientNet', 'VGG16'))
 
 if option == 'MobileNetV2':
     model = MobileNetV2.load_model()
