@@ -14,7 +14,7 @@ class EfficientNetB3(ModelName):
     @staticmethod
     @st.cache(allow_output_mutation=True)
     def load_model():
-        model = torch.load(EfficientNetB3.__model_path)
+        model = torch.load(EfficientNetB3.__model_path, map_location=torch.device('cpu'))
         return model
 
     @staticmethod
