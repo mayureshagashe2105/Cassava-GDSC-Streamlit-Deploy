@@ -1,5 +1,6 @@
 import torch
 from torchvision import models,transforms
+import tensorflow as tf
 from ModelName import ModelName
 import streamlit as st
 
@@ -21,7 +22,7 @@ class EfficientNetB3(ModelName):
     def preprocessing(image):
         image = super(EfficientNetB3, EfficientNetB3).preprocessing(image)
         image=transforms.Compose([transforms.Resize(EfficientNetB3.__input_shape),transforms.CenterCrop(224)])
-        image=image.float()
+        image=tf.cast(image, 'float32') / 255.0
         return image
 
 
