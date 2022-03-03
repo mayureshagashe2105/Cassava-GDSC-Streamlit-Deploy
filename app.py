@@ -12,9 +12,6 @@ LABEL_DICT = {0: 'Cassava Bacterial Blight (CBB)',
 
 st.title("Cassava Disease Detection")
 
-st.sidebar.title("Choose a Model")
-option = st.sidebar.radio('Choose the Model ', ('Choose a model', 'MobileNetV2', 'EfficientNet', 'VGG16'))
-
 
 method = st.selectbox('Capture or Upload an Image', ('Upload Image', 'Capture Image'))
 
@@ -31,9 +28,13 @@ if image_file:
     st.info('Image Uploaded successfully!')
     st.image(image_file.getvalue())
 
+
+st.sidebar.title("Choose a Model")
+option = st.sidebar.radio('', ('None', 'MobileNetV2', 'EfficientNet', 'VGG16'))
+
 if option == 'MobileNetV2':
-    model = MobileNetV2.load_model()
     if image_file is not None:
+        model = MobileNetV2.load_model()
 
         with st.spinner('Wait for it...'):
             image = MobileNetV2.preprocessing(image_file.getvalue())
@@ -44,13 +45,14 @@ if option == 'MobileNetV2':
 
             st.balloons()
         st.success(f"""Prediction: {LABEL_DICT[prediction]}""")
-
+    else:
+        st.sidebar.warning("Upload or Capture first!")
 
 elif option == 'EfficientNet':
     pass
 elif option == 'VGG16':
-    model = VGG.load_model()
     if image_file is not None:
+        model = VGG.load_model()
 
         with st.spinner('Wait for it...'):
             image = VGG.preprocessing(image_file.getvalue())
@@ -61,5 +63,8 @@ elif option == 'VGG16':
 
             st.balloons()
         st.success(f"""Prediction: {LABEL_DICT[prediction]}""")
+    else:
+        st.sidebar.warning("Upload or Capture first!")
+
 else:
-    st.info('Please Select a model!')
+    st.sidebar.info('Please Select a model!')
