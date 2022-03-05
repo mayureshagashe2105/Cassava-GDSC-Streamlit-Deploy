@@ -21,7 +21,7 @@ class EfficientNetB3(ModelName):
     def load_model():
       
         model=EfficientNetB3.Net()
-        model.load_state_dict(torch.load(EfficientNetB3.__model_path)["model_state_dict"])
+        model.load_state_dict(torch.load(EfficientNetB3.__model_path, map_location=torch.device('cpu'))["model_state_dict"])
         model.eval()
 
         return model
