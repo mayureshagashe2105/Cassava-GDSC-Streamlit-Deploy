@@ -2,6 +2,7 @@ import streamlit as st
 import time
 from VGG import VGG
 from MobileNetV2 import MobileNetV2
+from EfficientNetB3 import EfficientNetB3
 import numpy as np
 
 LABEL_DICT = {0: 'Cassava Bacterial Blight (CBB)',
@@ -49,7 +50,21 @@ if option == 'MobileNetV2':
         st.sidebar.warning("Upload or Capture first!")
 
 elif option == 'EfficientNet':
-    pass
+    if image_file is not None:
+        model=EfficientNetB3.load_model()
+
+        with st.spinner('Wait for it...'):
+            
+            image = EfficientNetB3.preprocessing(image_file.getvalue())
+
+            prediction = EfficientNetB3.predict(image,model)
+            print("prediction:",prediction)
+
+            st.balloons()
+        st.success(f"""Prediction: {LABEL_DICT[prediction]}""")
+    else:
+        st.sidebar.warning("Upload or Capture first!")
+
 elif option == 'VGG16':
     if image_file is not None:
         model = VGG.load_model()

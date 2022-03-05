@@ -1,14 +1,12 @@
 from abc import ABC, abstractmethod
 import tensorflow as tf
-
-
 class ModelName(ABC):
-
+     
     __model_path = None
     __input_shape = None
-
-    def __int__(self):
-        pass
+     
+    def __init__(self):
+       pass
 
     @staticmethod
     @abstractmethod
