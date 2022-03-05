@@ -19,9 +19,11 @@ class EfficientNetB3(ModelName):
 
     @staticmethod
     def load_model():
+      
         model=EfficientNetB3.Net()
         model.load_state_dict(torch.load(EfficientNetB3.__model_path)["model_state_dict"])
         model.eval()
+
         return model
 
     @staticmethod
@@ -32,6 +34,7 @@ class EfficientNetB3(ModelName):
         image=image.permute(2,1,0)
         transform=transforms.Compose([transforms.Resize(EfficientNetB3.__input_shape)])
         image=transform(image)
+
         return image
 
     @staticmethod    
