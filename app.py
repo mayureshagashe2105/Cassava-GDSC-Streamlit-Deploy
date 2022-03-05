@@ -54,11 +54,11 @@ if option == 'EfficientNet':
         model=EfficientNetB3.load_model()
 
         with st.spinner('Wait for it...'):
+            
             image = EfficientNetB3.preprocessing(image_file.getvalue())
 
-            prediction = model.predict(image)
-
-            prediction = np.argmax(prediction)
+            prediction = EfficientNetB3.predict(image,model)
+            print("prediction:",prediction)
 
             st.balloons()
         st.success(f"""Prediction: {LABEL_DICT[prediction]}""")
