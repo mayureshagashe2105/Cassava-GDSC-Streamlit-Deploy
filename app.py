@@ -49,7 +49,7 @@ if option == 'MobileNetV2':
     else:
         st.sidebar.warning("Upload or Capture first!")
 
-if option == 'EfficientNet':
+elif option == 'EfficientNet':
     if image_file is not None:
         model=EfficientNetB3.load_model()
 
