@@ -25,6 +25,10 @@ if arch_checkbox:
     elif option == "EfficientNet":
         st.subheader(option)
         st.image('images/EfficientNetB3.png')
+
+    elif option == "VGG16":
+        st.subheader(option)
+        st.image('images/VGG16.png')
 else:
     method = st.selectbox('Capture or Upload an Image', ('Upload Image', 'Capture Image'))
 
