@@ -19,7 +19,7 @@ class EfficientNetB3(ModelName):
 
     @staticmethod
     def load_model():
-      
+
         model=EfficientNetB3.Net()
         model.load_state_dict(torch.load(EfficientNetB3.__model_path, map_location=torch.device('cpu'))["model_state_dict"])
         model.eval()
@@ -37,17 +37,10 @@ class EfficientNetB3(ModelName):
 
         return image
 
-    @staticmethod    
+    @staticmethod
     def predict(image,model):
         image=image.unsqueeze(0)
         pred=model(image)
         print(pred)
         pred = nn.functional.softmax(pred, dim=1).data.cpu().numpy().argmax()
         return pred
-
-
-        
-    
-
-
-
