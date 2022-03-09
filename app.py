@@ -21,6 +21,9 @@ if arch_checkbox:
     if option == "MobileNetV2":
         st.subheader(option)
         st.image('imges/MobileNetV2.png')
+    elif option=="EfficientNet":
+        st.subheader(option)
+        st.image('images/EfficientNetB3.png')    
 else:
     method = st.selectbox('Capture or Upload an Image', ('Upload Image', 'Capture Image'))
 
@@ -36,6 +39,7 @@ else:
             progress_bar.progress(i + 1)
         st.info('Image Uploaded successfully!')
         st.image(image_file.getvalue())
+
 
     if option == 'MobileNetV2':
         if image_file is not None:
