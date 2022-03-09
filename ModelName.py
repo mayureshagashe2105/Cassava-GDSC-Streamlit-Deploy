@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 import tensorflow as tf
+import cv2
+
 class ModelName(ABC):
      
     __model_path = None
