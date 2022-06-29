@@ -4,6 +4,7 @@ from VGG import VGG
 from MobileNetV2 import MobileNetV2
 from EfficientNetB3 import EfficientNetB3
 import numpy as np
+import openslide
 
 LABEL_DICT = {0: 'Cassava Bacterial Blight (CBB)',
               1: 'Cassava Brown Streak Disease (CBSD)',
