@@ -5,3 +5,4 @@ torch==1.10.1
 torchvision==0.11.2
 efficientnet_pytorch==0.7.1
 opencv-python-headless==4.5.5.62
+openslide-python
